@@ -1,14 +1,23 @@
 import bodyParser, { OptionsJson } from "body-parser";
+import ErrnoException = NodeJS.ErrnoException;
+import cors from "cors";
 import express from "express";
 import * as filesystem from "fs";
-import ErrnoException = NodeJS.ErrnoException;
 
 // Create a new express application instance
 const app: express.Application = express();
 const port = 3000;
 
+// options for cors midddleware
+const options: cors.CorsOptions = {
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+    methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+    preflightContinue: false
+};
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("This is a simple mock server for a frontend exam project. \n" +

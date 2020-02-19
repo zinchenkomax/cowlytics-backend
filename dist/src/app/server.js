@@ -11,13 +11,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var body_parser_1 = __importDefault(require("body-parser"));
+var cors_1 = __importDefault(require("cors"));
 var express_1 = __importDefault(require("express"));
 var filesystem = __importStar(require("fs"));
 // Create a new express application instance
 var app = express_1.default();
 var port = 3000;
+// options for cors midddleware
+var options = {
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+    // credentials: true,
+    methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+    // origin: API_URL,
+    preflightContinue: false
+};
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
+app.use(cors_1.default());
 app.get("/", function (req, res) {
     res.send("This is a simple mock server for a frontend exam project. \n" +
         "It is providing a list of endpoints. \n"
