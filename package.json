@@ -1,0 +1,34 @@
+{
+  "name": "cowlytics-backend",
+  "version": "1.0.0",
+  "description": "Provides simple mock server for a frontend exam project",
+  "main": "./dist/server.js",
+  "repository": "https://zinchenkomax@bitbucket.org/zinchenkomax/cowlytics-backend.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "build2": "webpack --mode production",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/app/server.ts",
+    "prod": "build && node ./build/server.js",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix"
+  },
+  "author": "Maksim Zinchenko",
+  "license": "ISC",
+  "engines": {
+    "node": "11.10.1"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "express": "^4.16.4",
+    "rxjs": "latest",
+    "ts-md5": "^1.2.7"
+  },
+  "devDependencies": {
+    "ts-loader": "^5.4.5",
+    "tslint": "^5.14.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2",
+    "ts-node-dev": "^1.0.0-pre.32"
+  }
+}
